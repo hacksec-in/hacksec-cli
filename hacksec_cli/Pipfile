@@ -5,7 +5,11 @@ name = "pypi"
 
 [packages]
 prompt-toolkit = "*"
-termcolor = "*"
+aiohttp = "*"
+asyncio = "*"
+rich = "*"
+pyinquirer = "*"
+async-timeout = "*"
 
 [dev-packages]
 

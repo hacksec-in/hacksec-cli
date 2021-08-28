@@ -8,7 +8,6 @@ class user_configure():
     def __init__(self):
         self.username = "hacksec"
         self.isLogin = False
-        self.team = None
 
 
 class configure():
@@ -17,15 +16,18 @@ class configure():
     def __init__(self):
         self.isLinux = True
         self.version = "0.0.1"
-        self.host = "https://api.hacksec.in"
+        self.host = "http://127.0.0.1:8000"
         self.website = "https://hacksec.in"
-        self.user = {"username": "hacksec", "isLogin": False}
+        self.cmd_prefix = "#"
 
 
-def load_user(DATA_FILE):
+def load_user(DATA_FILE, user):
     """load user from user.json"""
     with open(DATA_FILE, "r") as f:
-        return json.load(f.read())
+        data = json.load(f)
+        user.username = data["username"]
+        user.isLogin = True
+        return user
 
 
 def app_config():
@@ -39,7 +41,7 @@ def app_config():
         config.isLinux = False
     if os.path.isdir(DATA_FOLDER):
         if os.path.isfile(DATA_FILE):
-            user = load_user(DATA_FILE)
+            user = load_user(DATA_FILE, user)
     else:
         os.makedirs(DATA_FOLDER)
     return config, user
