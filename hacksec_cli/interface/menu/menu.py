@@ -11,8 +11,8 @@ style = style_from_dict({
 })
 
 
-MENU = ["overview", "active weblab", "retired weblab", "upcoming weblab",
-        "report", "profile", "team", "announcement", "activity", "ranking", "settings", "premium", "help", "about", "contact us"]
+MENU = ["Overview", "Active weblab", "Retired weblab", "Upcoming weblab",
+        "Report", "Profile", "Team", "Announcement", "Activity", "Ranking", "Settings", "Help", "About", "Contact us", "Logout", "Premium", "Tools"]
 
 
 def main_menu(menu_name="Main Menu", MenuList=None, discription=None):
@@ -21,7 +21,7 @@ def main_menu(menu_name="Main Menu", MenuList=None, discription=None):
     Menu_items = [Separator('= '+menu_name+' =')]
     if MenuList is None:
         for i in MENU:
-            if i == "premium":
+            if i.lower() == "premium" or i.lower() == "tools":
                 Menu_items.append({"name": i, 'disabled': 'coming soon'})
             else:
                 Menu_items.append({"name": i})
@@ -39,4 +39,4 @@ def main_menu(menu_name="Main Menu", MenuList=None, discription=None):
     answers = prompt(questions, style=style)
     if len(answers) == 0:
         return None
-    return answers["menu"]
+    return answers["menu"].lower()

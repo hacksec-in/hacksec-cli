@@ -17,6 +17,8 @@ from mechanism.ranking.ranking import ranking
 from mechanism.contact_us.contact_us import contact_us
 from mechanism.help.help import Help
 from mechanism.settings.settings import Settings
+from mechanism.hash.hash import Hash
+from mechanism.report.report import Report
 import sys
 
 console = Console()
@@ -32,6 +34,8 @@ ranking = ranking()
 contact_us = contact_us()
 help = Help()
 settings = Settings()
+hash = Hash()
+report = Report()
 
 
 class cli():
@@ -59,14 +63,14 @@ class cli():
         else:
             _ = system('clear')
 
-    def handle_menu(self, command):
+    def handle_menu(self, command, Logout):
         if command == "exit" or command == "quit" or command == "q":
             self.request.close_session()
             console.print("\nExiting...", style="bold yellow")
             sys.exit()
         elif command == "menu" or command == "mn":
             anwser = main_menu()
-            self.handle_menu(anwser)
+            self.handle_menu(anwser, Logout)
         elif command == None or command == "":
             pass
         elif command == "clear" or command == "cl":
@@ -89,16 +93,26 @@ class cli():
             announcement.generate_dashboard(self.request)
         elif command == "activity" or command == "av":
             activity.generate_activity(self.request)
+        elif command == "report" or command == "rp":
+            report.generate_report(self.request)
+        elif command.startswith("send_report") or command.startswith("sr"):
+            report.send_report(command, self.request)
         elif command == "ranking" or command == "rn":
             ranking.which_ranking(self.request)
         elif command == "user ranking" or command == "ur":
             ranking.generate_rank(self.request, True)
         elif command == "team ranking" or command == "tr":
             ranking.generate_rank(self.request, False)
+        elif command == "upload_lab" or command == "ul":
+            upcoming_machine.upload_machine(self, self.request)
         elif command == "settings" or command == "st":
-            settings.generate_setting_menu(self.request)
+            settings.generate_setting_menu(self, self.request)
         elif command == "help" or command == "h":
             help.generate_help()
+        elif command.startswith("hash") or command.startswith("hs"):
+            hash.submit_hash(command, self.request)
+        elif command == "logout" or command == "lg":
+            Logout()
         elif command == "contact us" or command == "cn":
             contact_us.generate_contact()
         elif command == "about" or command == "ab":

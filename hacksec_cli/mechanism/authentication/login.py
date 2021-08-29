@@ -24,7 +24,7 @@ class Authenticator():
 
     def login_user(self, response):
         """save user login information"""
-        self.interface.prefix = response["username"] + self.interface.prefix
+        self.interface.prefix = response["username"]
         self.request.authenticate(response["access_token"])
         self.save_new_user(response)
 
@@ -40,7 +40,7 @@ class Authenticator():
             return response, True, None
         return None, False, "Your username and password is wrong"
 
-    def login_request(self):
+    def login_request(self, Logout):
         """ Ask the user for login """
         try:
             while True:
@@ -61,7 +61,7 @@ class Authenticator():
                         "You are successfully logged in")
                     self.login_user(res)
                     self.interface.handle_menu(
-                        self.interface.show_main_menu(self.interface))
+                        self.interface.show_main_menu(self.interface), Logout)
                     break
                 else:
                     self.interface.print_error(err)

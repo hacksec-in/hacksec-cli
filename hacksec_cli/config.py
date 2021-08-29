@@ -9,6 +9,14 @@ class user_configure():
         self.username = "hacksec"
         self.isLogin = False
         self.access_token = None
+        self.user_file = None
+
+    def logout(self):
+        """Logout the user"""
+        os.remove(self.user_file)
+        self.username = "hacksec"
+        self.isLogin = False
+        self.access_token = None
 
 
 class configure():
@@ -16,10 +24,10 @@ class configure():
 
     def __init__(self):
         self.isLinux = True
-        self.version = "0.0.1"
+        self.version = "0.0.1 (beta)"
         self.host = "https://api.hacksec.in"
         self.website = "https://hacksec.in"
-        self.cmd_prefix = "#"
+        self.cmd_prefix = "@hacksec#"
 
 
 def load_user(DATA_FILE, user):
@@ -39,6 +47,7 @@ def app_config():
     DATA_FILE = os.path.join(DATA_FOLDER, "user.json")
     config = configure()
     user = user_configure()
+    user.user_file = DATA_FILE
     if os.name == "nt":
         config.isLinux = False
     if os.path.isdir(DATA_FOLDER):

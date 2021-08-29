@@ -5,6 +5,7 @@ from mechanism.authentication.login import Authenticator
 from utils.request.req import MakeRequest
 import json
 import os
+import sys
 
 config, user = app_config()
 request = MakeRequest(config)
@@ -28,9 +29,21 @@ def LoadExternalConfig():
     return None
 
 
+def Logout():
+    """logout"""
+    try:
+        user.logout()
+        os.remove(os.path.expanduser('~'))
+    except:
+        pass
+    cli.print_info("Logged out")
+    Exit()
+    sys.exit(0)
+
+
 if user.isLogin == False:
     cli.print_info("Your not logged in")
-    Login.login_request()
+    Login.login_request(Logout)
 else:
     request.authenticate(user.access_token)
 
@@ -44,13 +57,11 @@ def main():
             for i in external_config["shortcuts"]:
                 if anwser == i["shortcut"]:
                     anwser = anwser.replace(i["shortcut"], i["command"])
-            data = anwser.lower()
-            cli.handle_menu(data)
+            cli.handle_menu(anwser, Logout)
     else:
         while True:
             anwser = cli.get_prompt()
-            data = anwser.lower()
-            cli.handle_menu(data)
+            cli.handle_menu(anwser, Logout)
 
 
 if __name__ == '__main__':

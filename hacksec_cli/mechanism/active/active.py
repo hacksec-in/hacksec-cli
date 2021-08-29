@@ -27,6 +27,8 @@ class Active_machine():
             table.add_row(str(i["machine_id"]), str(i["machine_name"]), str(i["host"]),
                           str(i["hint"]), str(i["point"]), str(i["tottal_own"]), str(i["owned"]))
         console.print(table)
+        console.print(
+            "To sumbit hash type : hash machine_name machine_hash_here", style="bold blue")
 
     def generate_table(self, request):
         """generate table from active machines data"""

@@ -43,6 +43,12 @@ class Help():
                    {"short": "ov", "command": "overview", "desc": "show overview"},
                    {"short": "aw", "command": "active weblab",
                        "desc": "show active weblab"},
+                   {"short": "hs", "command": "hash",
+                       "desc": "submit weblab hash example : hash weblab_name hash_goes_here"},
+                   {"short": "rp", "command": "report",
+                    "desc": "show all report"},
+                   {"short": "sr", "command": "send_report",
+                    "desc": "send your report to us using this command and we will review it and add it to our website"},
                    {"short": "rw", "command": "retired weblab",
                        "desc": "show retired weblab"},
                    {"short": "uw", "command": "upcoming weblab",
@@ -67,6 +73,11 @@ class Help():
                        "desc": "this will open settings menu where you can change your username ,email or password"},
                    {"short": "ab", "command": "about", "desc": "show what we are"},
                    {"short": "h", "command": "help", "desc": "show help"},
+                   {"short": "!", "command": "!",
+                       "desc": "use ! to run os command example : !ls -la"},
+                   {"short": "ul", "command": "upload_lab",
+                       "desc": "you can upload your own weblab using um or upload_lab command"},
                    {"short": "q", "command": "quit", "desc": "quit program"},
-                   {"short": "cl", "command": "clear", "desc": "clear screen"}]
+                   {"short": "cl", "command": "clear", "desc": "clear screen"},
+                   {"short": "lg", "command": "logout", "desc": "logout user from hacksec-cli"}]
         self.generate_table(options)

@@ -41,3 +41,11 @@ class MakeRequest():
         """make post request"""
         async with self.session.post(self.host + endpoint, json=payload, headers=self.header) as response:
             return await response.json(), response.status
+
+    @runner
+    async def upload(self, endpoint, file):
+        """make post request"""
+        form = aiohttp.FormData()
+        form.add_field('file', file)
+        async with self.session.post(self.host + endpoint, data=form, headers=self.header) as response:
+            return await response.json(), response.status
