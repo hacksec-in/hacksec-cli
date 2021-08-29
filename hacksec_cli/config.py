@@ -24,7 +24,7 @@ class configure():
 
     def __init__(self):
         self.isLinux = True
-        self.version = "0.0.1 (beta)"
+        self.version = "1.0"
         self.host = "https://api.hacksec.in"
         self.website = "https://hacksec.in"
         self.cmd_prefix = "@hacksec#"
