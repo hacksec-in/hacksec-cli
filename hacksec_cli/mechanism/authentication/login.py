@@ -24,7 +24,7 @@ class Authenticator():
 
     def login_user(self, response):
         """save user login information"""
-        self.interface.prefix = response["username"]
+        self.interface.prefix = response["username"] + "@hacksec#"
         self.request.authenticate(response["access_token"])
         self.save_new_user(response)
 
