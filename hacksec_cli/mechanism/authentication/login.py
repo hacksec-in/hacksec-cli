@@ -25,6 +25,7 @@ class Authenticator():
     def login_user(self, response):
         """save user login information"""
         self.interface.prefix = response["username"] + self.interface.prefix
+        self.request.authenticate(response["access_token"])
         self.save_new_user(response)
 
     def login_server(self, username, password):
@@ -52,7 +53,7 @@ class Authenticator():
                 if password == "":
                     self.interface.print_error("Password cannot be empty")
                     continue
-                with console.status("[bold green]Working on tasks..."):
+                with console.status("[bold green]Please wait..."):
                     res, status, err = self.login_server(username, password)
                 if status:
                     res["username"] = username

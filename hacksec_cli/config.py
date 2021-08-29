@@ -8,6 +8,7 @@ class user_configure():
     def __init__(self):
         self.username = "hacksec"
         self.isLogin = False
+        self.access_token = None
 
 
 class configure():
@@ -16,7 +17,7 @@ class configure():
     def __init__(self):
         self.isLinux = True
         self.version = "0.0.1"
-        self.host = "http://127.0.0.1:8000"
+        self.host = "https://api.hacksec.in"
         self.website = "https://hacksec.in"
         self.cmd_prefix = "#"
 
@@ -27,6 +28,7 @@ def load_user(DATA_FILE, user):
         data = json.load(f)
         user.username = data["username"]
         user.isLogin = True
+        user.access_token = data["access_token"]
         return user
 
 

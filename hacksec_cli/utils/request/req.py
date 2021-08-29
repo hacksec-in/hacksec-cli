@@ -6,10 +6,12 @@ class MakeRequest():
     """make http request to our server"""
 
     def __init__(self, config):
+        connector = aiohttp.TCPConnector(limit=50, force_close=True)
         self.host = config.host
         self.header = {
             "Accept": "application/json, text/plain, */*", "Connection": "keep-alive", "Accept-Encoding": "gzip, deflate, br", "User-Agent": "hacksec cli/"+config.version}
-        self.session = aiohttp.ClientSession(trust_env=True)
+        self.session = aiohttp.ClientSession(
+            trust_env=True, connector=connector)
 
     def runner(func):
         """runner"""
@@ -36,6 +38,6 @@ class MakeRequest():
 
     @runner
     async def post(self, endpoint, payload):
-        """make get request"""
+        """make post request"""
         async with self.session.post(self.host + endpoint, json=payload, headers=self.header) as response:
             return await response.json(), response.status
