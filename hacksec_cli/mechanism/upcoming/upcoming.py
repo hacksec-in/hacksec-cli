@@ -32,7 +32,7 @@ class upcoming_machine():
 
     def upload_machine(self, interface, request):
         """Upload machine to upcoming machines"""
-        console.print("Upload Weblab", style="bold blue")
+        console.print("Upload Web-lab", style="bold blue")
         machine_name = interface.get_prompt(
             label="Enter your weblab name: ")
         point = interface.get_prompt(

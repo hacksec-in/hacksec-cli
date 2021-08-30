@@ -10,6 +10,7 @@ asyncio = "*"
 rich = "*"
 pyinquirer = "*"
 async-timeout = "*"
+gitpython = "*"
 
 [dev-packages]
 

@@ -7,8 +7,10 @@ from utils.request.req import MakeRequest
 import json
 import os
 import sys
+from update import version_verify
 
 config, user = app_config()
+version_verify(config.version)
 request = MakeRequest(config)
 cli = interface_cli(
     prefix=user.username+config.cmd_prefix, history_file="history.txt", request=request)

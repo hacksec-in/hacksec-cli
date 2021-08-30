@@ -28,11 +28,11 @@ class Active_machine():
                           str(i["hint"]), str(i["point"]), str(i["tottal_own"]), str(i["owned"]))
         console.print(table)
         console.print(
-            "To sumbit hash type : hash machine_name machine_hash_here", style="bold blue")
+            "To sumbit hash type : hash web-lab_name web-lab_hash_here", style="bold blue")
 
     def generate_table(self, request):
         """generate table from active machines data"""
-        console.print("Active Machine", style="bold blue")
+        console.print("Active Web-lab", style="bold blue")
         with console.status("[bold green]please wait...\n") as status:
             data, status = self.get_data(request)
             if status == 200:

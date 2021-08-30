@@ -30,7 +30,7 @@ class retired_machine():
 
     def generate_table(self, request):
         """Generate table for retired machines"""
-        console.print("Retired Machine", style="bold blue")
+        console.print("Retired Web-lab", style="bold blue")
         with console.status("[bold green]please wait...\n") as status:
             data, status = self.get_data(request)
             if status == 200:
