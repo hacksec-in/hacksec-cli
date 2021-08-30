@@ -26,3 +26,4 @@ def version_verify(current_version):
         os.remove(install_dir)
         Repo.clone_from(
             "https://github.com/ScRiPt1337/hacksec-cli", install_dir)
+        console.print("Please restart hacksec-cli", style="bold red")
