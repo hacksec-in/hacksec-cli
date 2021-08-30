@@ -18,12 +18,13 @@ def version_verify(current_version):
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     result = loop.run_until_complete(check_for_update())
-    if float(result.decode()) > current_version:
+    if float(result.decode()) > float(current_version):
         console.print("there is an upload available", style="bold red")
-    with console.status("[bold green]updating...\n") as status:
-        install_dir = os.path.join(
-            os.path.expanduser('~'), "hacksec-cli")
-        os.remove(install_dir)
-        Repo.clone_from(
-            "https://github.com/ScRiPt1337/hacksec-cli", install_dir)
-        console.print("Please restart hacksec-cli", style="bold red")
+        with console.status("[bold green]updating...\n") as status:
+            install_dir = os.path.join(
+                os.path.expanduser('~'), "hacksec-cli")
+            if os.path.isdir(install_dir):
+                os.remove(install_dir)
+            Repo.clone_from(
+                "https://github.com/ScRiPt1337/hacksec-cli", install_dir)
+            console.print("Please restart hacksec-cli", style="bold red")
