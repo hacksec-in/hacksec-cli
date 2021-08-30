@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from interface.cli import cli as interface_cli
 from config import app_config
 from interface.banner.banner import ShowBanner
