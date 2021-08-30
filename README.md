@@ -24,17 +24,6 @@ hacksec-cli access all our web labs and features directly from your command-line
 
 - python3
 
-### Example commands
-
-```python
-    hacksec
-```
-
-### Install
-
-```python
-    pip3 install hacksec-cli
-```
 
 ### Help
 
