@@ -17,7 +17,7 @@ script1337x@hacksec#
 hacksec-cli access all our web labs and features directly from your command-line
 
 [![GitHub issues](https://img.shields.io/github/issues/ScRiPt1337/hacksec-cli)](https://github.com/ScRiPt1337/hacksec-cli/issues)
-[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fhacksec42)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FScRiPt1337%2Fhacksec-cli)
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fhacksec42)](https://twitter.com/intent/tweet?text=Wow #hacksec:&url=https%3A%2F%2Fgithub.com%2FScRiPt1337%2Fhacksec-cli)
 [![Hacksec](https://img.shields.io/badge/hacksec-1.0-red)](https://hacksec.in)
 
 ### Requirement
