@@ -24,6 +24,17 @@ hacksec-cli access all our web labs and features directly from your command-line
 
 - python3
 
+### How to install in windows
+
+- git clone https://github.com/ScRiPt1337/hacksec-cli
+- cd hacksec-cli
+- python3 install.py
+
+### How to install in linux
+
+```python
+    curl -s -L https://raw.githubusercontent.com/ScRiPt1337/hacksec-cli/main/install.sh | bash
+```
 
 ### Help
 
