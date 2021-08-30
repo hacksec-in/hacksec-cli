@@ -33,7 +33,7 @@ hacksec-cli access all our web labs and features directly from your command-line
 ### How to install in linux
 
 ```python
-    curl -s -L https://raw.githubusercontent.com/ScRiPt1337/hacksec-cli/main/install.sh | bash
+    curl -s -L https://raw.githubusercontent.com/hacksec-in/hacksec-cli/main/install.sh | bash
 ```
 
 ### Help
