@@ -1,12 +1,16 @@
-sudo apt-get install git python3 python3-pip -y
-
-if [ -d ~/hacksec-cli ] 
-then
-    rm -rf ~/hacksec-cli
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
 fi
-git clone https://github.com/ScRiPt1337/hacksec-cli ~/hacksec-cli
+apt-get install git python3 python3-pip -y
+
+if [ -d /usr/share/hacksec-cli ] 
+then
+    rm -rf /usr/share/hacksec-cli
+fi
+git clone https://github.com/ScRiPt1337/hacksec-cli /usr/share/hacksec-cli
 pip install -r  ~/hacksec-cli/requirements.txt
-sudo chmod 777 /usr/bin/
-sudo echo "python3 ~/hacksec-cli/hacksec_cli/app.py" > /usr/bin/hacksec
-sudo chmod +x /usr/bin/hacksec
+sudo echo "python3 /usr/share/hacksec-cli/hacksec_cli/app.py" > /bin/hacksec
+sudo chmod +x /bin/hacksec
 echo "hacksec-cli successfully installed type hacksec"

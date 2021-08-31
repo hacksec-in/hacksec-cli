@@ -18,11 +18,15 @@ def version_verify(current_version):
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     result = loop.run_until_complete(check_for_update())
+    install_dir = ""
     if float(result.decode()) > float(current_version):
         console.print("there is an upload available", style="bold red")
         with console.status("[bold green]updating...\n") as status:
-            install_dir = os.path.join(
-                os.path.expanduser('~'), "hacksec-cli")
+            if os.name == "nt":
+                install_dir = os.path.join(
+                    os.path.expanduser('~'), "hacksec-cli")
+            else:
+                install_dir = os.path.join("/usr/share", "hacksec-cli")
             if os.path.isdir(install_dir):
                 os.remove(install_dir)
             Repo.clone_from(
