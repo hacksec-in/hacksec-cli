@@ -3,6 +3,7 @@ from rich.table import Table
 from interface.menu.menu import main_menu
 import os
 import sys
+import subprocess
 
 console = Console()
 
