@@ -10,7 +10,7 @@ then
     rm -rf /usr/share/hacksec-cli
 fi
 git clone https://github.com/ScRiPt1337/hacksec-cli /usr/share/hacksec-cli
-pip install -r  ~/hacksec-cli/requirements.txt
+pip install -r  /usr/share/hacksec-cli/requirements.txt
 sudo echo "python3 /usr/share/hacksec-cli/hacksec_cli/app.py" > /bin/hacksec
 sudo chmod +x /bin/hacksec
 echo "hacksec-cli successfully installed type hacksec"

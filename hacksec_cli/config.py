@@ -24,10 +24,11 @@ class configure():
 
     def __init__(self):
         self.isLinux = True
-        self.version = "1.0"
         self.host = "https://api.hacksec.in"
         self.website = "https://hacksec.in"
         self.cmd_prefix = "@hacksec#"
+        with open("version.txt","r") as file:
+            self.version = file.read()
 
 
 def load_user(DATA_FILE, user):
