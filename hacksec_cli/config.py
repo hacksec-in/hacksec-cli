@@ -27,8 +27,8 @@ class configure():
         self.host = "https://api.hacksec.in"
         self.website = "https://hacksec.in"
         self.cmd_prefix = "@hacksec#"
-        with open(os.path.join(os.getcwd(),"version.txt"),"r") as file:
-            self.version = file.read()
+        self.version = "0.0"
+
 
 
 def load_user(DATA_FILE, user):
@@ -40,6 +40,11 @@ def load_user(DATA_FILE, user):
         user.access_token = data["access_token"]
         return user
 
+def get_version():
+    """get version of the app"""
+    version_txt = os.path.join(os.path.dirname(__file__), "version.txt")
+    with open(version_txt,"r") as file:
+        return file.read()
 
 def app_config():
     """init configure"""
@@ -49,6 +54,7 @@ def app_config():
     config = configure()
     user = user_configure()
     user.user_file = DATA_FILE
+    config.version = get_version()
     if os.name == "nt":
         config.isLinux = False
     if os.path.isdir(DATA_FOLDER):
