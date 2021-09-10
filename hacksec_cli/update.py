@@ -9,7 +9,7 @@ console = Console()
 
 
 async def check_for_update():
-    url = "https://raw.githubusercontent.com/ScRiPt1337/hacksec-cli/main/hacksec_cli/version.txt"
+    url = "https://raw.githubusercontent.com/hacksec-in/hacksec-cli/main/hacksec_cli/version.txt"
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as r:
             return await r.read()
@@ -36,7 +36,7 @@ def version_verify(current_version):
                     console.print("[bold red]Please run hacksec as root to update!", style="bold red")
                     exit()
             Repo.clone_from(
-                "https://github.com/ScRiPt1337/hacksec-cli", install_dir)
+                "https://github.com/hacksec-in/hacksec-cli", install_dir)
             console.print("Update successfull", style="bold green")
             console.print("Please restart hacksec-cli", style="bold green")
             exit()
