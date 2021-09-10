@@ -27,7 +27,7 @@ class configure():
         self.host = "https://api.hacksec.in"
         self.website = "https://hacksec.in"
         self.cmd_prefix = "@hacksec#"
-        with open("version.txt","r") as file:
+        with open(os.path.join(os.getcwd(),"version.txt"),"r") as file:
             self.version = file.read()
 
 
