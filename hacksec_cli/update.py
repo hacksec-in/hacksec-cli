@@ -3,6 +3,7 @@ import asyncio
 import os
 from git import Repo
 from rich.console import Console
+import shutil
 
 console = Console()
 
@@ -20,7 +21,7 @@ def version_verify(current_version):
     result = loop.run_until_complete(check_for_update())
     install_dir = ""
     if float(result.decode()) > float(current_version):
-        console.print("there is an upload available", style="bold red")
+        console.print("There is an upload available", style="bold red")
         with console.status("[bold green]updating...\n") as status:
             if os.name == "nt":
                 install_dir = os.path.join(
@@ -28,7 +29,14 @@ def version_verify(current_version):
             else:
                 install_dir = os.path.join("/usr/share", "hacksec-cli")
             if os.path.isdir(install_dir):
-                os.remove(install_dir)
+                try:
+                    # os.rmdir(install_dir)
+                    shutil.rmtree(install_dir)
+                except PermissionError:
+                    console.print("[bold red]Please run hacksec as root to update!", style="bold red")
+                    exit()
             Repo.clone_from(
                 "https://github.com/ScRiPt1337/hacksec-cli", install_dir)
-            console.print("Please restart hacksec-cli", style="bold red")
+            console.print("Update successfull", style="bold green")
+            console.print("Please restart hacksec-cli", style="bold green")
+            exit()
