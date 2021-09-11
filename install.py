@@ -16,7 +16,7 @@ def setup():
     from git import Repo
     install_dir = os.path.join(
         os.path.expanduser('~'), "hacksec-cli")
-    if install_dir.isdir(install_dir):
+    if os.path.isdir(install_dir):
         os.remove(install_dir)
     Repo.clone_from(
         "https://github.com/ScRiPt1337/hacksec-cli", install_dir)
