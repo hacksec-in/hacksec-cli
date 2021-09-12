@@ -1,4 +1,5 @@
-import aiohttp
+import json
+import httpx
 import asyncio
 
 
@@ -6,12 +7,10 @@ class MakeRequest():
     """make http request to our server"""
 
     def __init__(self, config):
-        connector = aiohttp.TCPConnector(limit=50, force_close=True)
         self.host = config.host
         self.header = {
-            "Accept": "application/json, text/plain, */*", "Connection": "keep-alive", "Accept-Encoding": "gzip, deflate, br", "User-Agent": "hacksec cli/"+config.version}
-        self.session = aiohttp.ClientSession(
-            trust_env=True, connector=connector)
+            "Accept": "application/json, text/plain, */*", "Accept-Encoding": "gzip, deflate, br"}
+        self.session = httpx.AsyncClient(base_url=self.host)
 
     def runner(func):
         """runner"""
@@ -28,24 +27,23 @@ class MakeRequest():
     @runner
     async def close_session(self):
         """close session"""
-        await self.session.close()
+        await self.session.aclose()
 
     @runner
     async def get(self, endpoint):
         """make get request"""
-        async with self.session.get(self.host + endpoint, headers=self.header) as response:
-            return await response.json(), response.status
+        response = await self.session.get(endpoint, headers=self.header)
+        return response.json(), response.status_code
 
     @runner
     async def post(self, endpoint, payload):
         """make post request"""
-        async with self.session.post(self.host + endpoint, json=payload, headers=self.header) as response:
-            return await response.json(), response.status
+        response = await self.session.post(endpoint, data=json.dumps(payload), headers=self.header)
+        return response.json(), response.status_code
 
     @runner
     async def upload(self, endpoint, file):
         """make post request"""
-        form = aiohttp.FormData()
-        form.add_field('file', file)
-        async with self.session.post(self.host + endpoint, data=form, headers=self.header) as response:
-            return await response.json(), response.status
+        files = {'file': file}
+        response = await self.session.post(self.host + endpoint, files=files, headers=self.header)
+        return response.json(), response.status_code

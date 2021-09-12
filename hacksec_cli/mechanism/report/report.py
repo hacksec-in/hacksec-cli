@@ -61,8 +61,11 @@ class Report():
         except IndexError:
             console.print("Error: invalid command", style="bold red")
         with console.status("[bold green]please wait...\n") as status:
-            data, status_code = request.post(
-                endpoint="/writeups/add", payload=payload)
+            try:
+                data, status_code = request.post(
+                    endpoint="/writeups/add", payload=payload)
+            except:
+                return
             if status_code == 200:
                 console.print(
                     "Your report has been send successfully and it's under review 🔥", style="bold green")

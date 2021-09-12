@@ -18,7 +18,7 @@ script1337x@hacksec#
 
 [![GitHub issues](https://img.shields.io/github/issues/ScRiPt1337/hacksec-cli)](https://github.com/ScRiPt1337/hacksec-cli/issues)
 [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fhacksec42)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FScRiPt1337%2Fhacksec-cli)
-[![Hacksec](https://img.shields.io/badge/hacksec-1.2-red)](https://hacksec.in)
+[![Hacksec](https://img.shields.io/badge/hacksec-1.3-red)](https://hacksec.in)
 
 ### Requirement
 

@@ -22,10 +22,9 @@ class retired_machine():
         table.add_column("hint", style="green")
         table.add_column("point", style="green")
         table.add_column("tottal_own", style="green")
-        table.add_column("owned", style="green")
         for i in data:
             table.add_row(str(i["machine_id"]), str(i["machine_name"]), str(i["host"]),
-                          str(i["hint"]), str(i["point"]), str(i["tottal_own"]), str(i["owned"]))
+                          str(i["hint"]), str(i["point"]), str(i["tottal_own"]))
         console.print(table)
 
     def generate_table(self, request):
