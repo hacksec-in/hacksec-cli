@@ -4,6 +4,7 @@ import os
 from git import Repo
 from rich.console import Console
 import shutil
+import pip
 
 console = Console()
 
@@ -13,6 +14,12 @@ async def check_for_update():
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as r:
             return await r.read()
+
+def install():
+    if hasattr(pip, 'main'):
+        pip.main(['install', "-r", "/usr/share/hacksec-cli/requirements.txt"])
+    else:
+        pip._internal.main(['install',  "-r", "/usr/share/hacksec-cli/requirements.txt"])
 
 
 def version_verify(current_version):
